@@ -90,3 +90,63 @@ kubectl get deployment -n sre
 ![alt text](<images/SPLIT SCREEN.png>)
 
 By now, you will see that your UpCommerce deployment is failing. This is the main reason why you have been getting firing alerts.
+
+
+Task
+
+You are required to troubleshoot your deployment and find the reason for which it is failing. When you have found it, write a memo (100–150 words) in a Google Doc to your Incident Commander and Communications Lead, informing them of the cause of the service outage.
+
+You can use this simple template to write up your memo. 
+
+Just click File --> Make a Copy to get started!
+
+[Extension]
+
+Troubleshooting system outages using Grafana
+
+Grafana is an open-source analytics and monitoring solution for time-series data. It allows you to query, visualize, alert on, and understand your metrics, no matter where they are stored. Grafana provides a powerful and flexible platform for creating rich, interactive dashboards that can be used for monitoring and analyzing various systems and applications.
+
+The walkthrough video in the Walkthrough tab on this project page guides you through how to use Grafana in GitHub Codespaces.
+
+# Task
+
+Based on what you have learned in the video above, try to troubleshoot UpCommerce's service using details from your Grafana dashboard.
+
+![alt text](<images/create dashboard.png>)
+
+
+![alt text](<images/add visualization.png>)
+
+![alt text](<images/create data source.png>)
+
+![alt text](<images/add url.png>)
+
+![alt text](<images/scrool and test.png>)
+![alt text](<images/sucessful test.png>)
+
+![alt text](<images/create dasboard with prometheus data source.png>)
+
+![alt text](<images/selcet source.png>)
+![alt text](<images/k8s grafna.png>)
+
+using grafana we are able to visualize certain metric that helps us to troubleshoot the real issue
+![alt text](<images/grfana 2 dashboard.png>)
+
+now let's run this command in our terminal to check the logs
+
+```
+kubectl describe pod upcommerce-app-two -n sre
+```
+
+![alt text](images/describe.png)
+
+what we see here is that the scheduler couldn't find a place for the pod because there wasn't enough CPU available on any of the nodes. It also couldn't remove any existing pods to make room for the new one.
+
+Looking at the deployment.yml file 
+
+![alt text](images/cpu.png)
+
+I noticed the CPU is 10 but on my machine github codespace i'm using a 2-core • 8GB RAM • 32GB
+
+
+
