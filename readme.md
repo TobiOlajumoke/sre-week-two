@@ -149,4 +149,6 @@ Looking at the deployment.yml file
 I noticed the CPU is 10 but on my machine github codespace i'm using a 2-core • 8GB RAM • 32GB
 
 
+but if i correct my cpu here in my deployment.yml file from 10 to 1 
+
 
