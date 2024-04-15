@@ -39,6 +39,8 @@ helm install grafana grafana/grafana \
  --namespace sre \
  --set adminPassword="admin"
 ```
+![alt text](images/steps.png)
+
 7. For this task, you'll need the following services running:
 
     a. Prometheus server
@@ -85,4 +87,6 @@ kubectl apply -f service.yml -n sre
 ```
 kubectl get deployment -n sre
 ```
+![alt text](<images/SPLIT SCREEN.png>)
+
 By now, you will see that your UpCommerce deployment is failing. This is the main reason why you have been getting firing alerts.
